@@ -1,4 +1,4 @@
-CREATE TASK IF NOT EXISTS simple_task
+CREATE OR REPLACE TASK simple_task
     WAREHOUSE = 'xsmall'
     SCHEDULE = 'USING CRON 0 * * * * UTC'
 AS
