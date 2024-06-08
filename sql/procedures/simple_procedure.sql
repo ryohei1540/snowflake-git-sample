@@ -4,7 +4,7 @@ LANGUAGE SQL
 AS
 $$
 BEGIN
-    INSERT INTO simple_table (value, created_at) VALUES (:1, CURRENT_TIMESTAMP());
+    INSERT INTO simple_table (id, value, created_at) VALUES (9999,value, CURRENT_TIMESTAMP());
     RETURN 'Insert successful';
 END;
 $$
