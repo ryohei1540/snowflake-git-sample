@@ -6,15 +6,6 @@ def return_simple_table(session):
     # 既存のテーブルを読み込み
     df = session.table("simple_table")
     
-    # 新しい行をDataFrameとして作成
-    # new_row = session.create_dataframe([[1, 'New Name', datetime.now()]], schema=["id", "name", "created_at"])
-    new_row = session.create_dataframe([[999, 'New Name', datetime.now()]], schema=["id", "name", "created_at"])
-    
-    # 新しい行を既存のDataFrameに追加
-    df = df.union(new_row)
-    
-    return df
+    session.sql("INSERT INTO simple_table (id, value, created_at) VALUES (UNIFORM(1, 100, RANDOM()), RANDOM_STRING(10), CURRENT_TIMESTAMP())").collect()
+    return 'ok'
 
-if __name__ == "__main__":
-    session = Session.builder.getOrCreate()
-    return_simple_table(session).show()
